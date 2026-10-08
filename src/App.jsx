@@ -241,57 +241,57 @@ export default function App() {
 
   if (!token) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 selection:bg-indigo-500 selection:text-white">
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 selection:bg-indigo-500 selection:text-white">
         
         {/* Settings button to adjust backend URL if needed */}
         <button
           onClick={() => setIsSettingsOpen(true)}
           title="API Configuration"
-          className="absolute top-6 right-6 p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition"
+          className="absolute top-6 right-6 p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 shadow-sm transition"
         >
           <Settings className="w-5 h-5" />
         </button>
 
-        <div className="w-full max-w-sm bg-slate-900/80 border border-slate-800 p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
+        <div className="w-full max-w-sm bg-white/90 border border-slate-200/80 p-8 rounded-3xl shadow-xl shadow-slate-200/60 backdrop-blur-sm">
           <div className="flex justify-center mb-6">
             <div className="p-3.5 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-2xl shadow-lg shadow-indigo-500/20">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-center text-white mb-2">
+          <h1 className="text-2xl font-bold text-center text-slate-900 mb-2">
             TaskFlow
           </h1>
-          <p className="text-center text-slate-400 text-sm mb-8">
+          <p className="text-center text-slate-500 text-sm mb-8">
             {isAuthMode === 'login' ? 'Sign in to sync your tasks securely.' : 'Create an account to get started.'}
           </p>
 
           <form onSubmit={handleAuth} className="flex flex-col gap-4">
             {authError && (
-              <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs p-3 rounded-xl flex gap-2">
+              <div className="bg-rose-50 border border-rose-200 text-rose-600 text-xs p-3 rounded-xl flex gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{authError}</span>
               </div>
             )}
             <div className="relative">
-              <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+              <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="email"
                 required
                 value={authEmail}
                 onChange={(e) => setAuthEmail(e.target.value)}
                 placeholder="Email address"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500/70"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 shadow-sm transition-all"
               />
             </div>
             <div className="relative">
-              <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+              <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="password"
                 required
                 value={authPassword}
                 onChange={(e) => setAuthPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500/70"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 shadow-sm transition-all"
               />
             </div>
             <button
@@ -310,7 +310,7 @@ export default function App() {
             </span>
             <button
               onClick={() => setIsAuthMode(isAuthMode === 'login' ? 'register' : 'login')}
-              className="text-indigo-400 hover:text-indigo-300 font-medium transition"
+              className="text-indigo-600 hover:text-indigo-700 font-semibold transition"
             >
               {isAuthMode === 'login' ? 'Sign up' : 'Log in'}
             </button>
@@ -319,25 +319,25 @@ export default function App() {
 
         {/* Re-use Settings Modal Logic */}
         {isSettingsOpen && (
-          <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-              <button onClick={() => setIsSettingsOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-200">
+          <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md p-6 shadow-2xl relative text-slate-900">
+              <button onClick={() => setIsSettingsOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
                 <X className="w-5 h-5" />
               </button>
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-                <Server className="w-5 h-5 text-indigo-400" /> API Environment Settings
+              <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                <Server className="w-5 h-5 text-indigo-600" /> API Environment Settings
               </h2>
               <div className="mt-4 flex flex-col gap-2">
-                <label className="text-xs font-medium text-slate-300">Backend URL</label>
+                <label className="text-xs font-medium text-slate-700">Backend URL</label>
                 <input
                   type="text"
                   value={pendingApiUrl}
                   onChange={(e) => setPendingApiUrl(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-indigo-500 font-mono shadow-sm"
                 />
               </div>
               <div className="mt-6 flex justify-end gap-2.5">
-                <button onClick={() => setIsSettingsOpen(false)} className="px-4 py-2 rounded-xl text-xs text-slate-400 hover:bg-slate-800">Cancel</button>
+                <button onClick={() => setIsSettingsOpen(false)} className="px-4 py-2 rounded-xl text-xs text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
                 <button onClick={() => { setApiUrl(pendingApiUrl); setIsSettingsOpen(false); }} className="px-4 py-2 rounded-xl text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Save</button>
               </div>
             </div>
@@ -348,37 +348,37 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center py-8 px-4 sm:px-6 selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col items-center py-8 px-4 sm:px-6 selection:bg-indigo-500 selection:text-white">
       <div className="w-full max-w-2xl flex flex-col gap-6">
         
-        <header className="flex flex-col gap-4 border-b border-slate-800 pb-5">
+        <header className="flex flex-col gap-4 border-b border-slate-200 pb-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-xl shadow-lg shadow-indigo-500/20">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">TaskFlow</h1>
-                <p className="text-xs text-slate-400">Secured with JWT</p>
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2">TaskFlow</h1>
+                <p className="text-xs text-slate-500">Secured with JWT</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <button onClick={() => fetchTodos(apiUrl)} title="Refresh" className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition">
-                <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-indigo-400' : ''}`} />
+              <button onClick={() => fetchTodos(apiUrl)} title="Refresh" className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 shadow-sm transition">
+                <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-indigo-600' : ''}`} />
               </button>
-              <button onClick={() => setIsSettingsOpen(true)} title="Settings" className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition">
+              <button onClick={() => setIsSettingsOpen(true)} title="Settings" className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 shadow-sm transition">
                 <Settings className="w-4 h-4" />
               </button>
             </div>
           </div>
           
-          <div className="flex items-center justify-between text-xs px-3.5 py-2.5 rounded-lg border bg-slate-900/60 backdrop-blur border-slate-800/80">
-            <div className="flex items-center gap-2 text-slate-300">
-              <UserIcon className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Signed in as <strong className="font-medium">{currentUser}</strong></span>
+          <div className="flex items-center justify-between text-xs px-3.5 py-2.5 rounded-xl border bg-white/80 backdrop-blur border-slate-200/80 shadow-sm">
+            <div className="flex items-center gap-2 text-slate-700">
+              <UserIcon className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Signed in as <strong className="font-semibold text-slate-900">{currentUser}</strong></span>
             </div>
-            <button onClick={handleLogout} className="flex items-center gap-1.5 text-rose-400 hover:text-rose-300 transition">
+            <button onClick={handleLogout} className="flex items-center gap-1.5 text-rose-600 hover:text-rose-700 font-medium transition">
               <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Logout</span>
             </button>
@@ -386,13 +386,13 @@ export default function App() {
         </header>
 
         <form onSubmit={handleAddTodo} className="relative group">
-          <div className="flex items-center gap-2 p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl shadow-black/40 focus-within:border-indigo-500/80 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
+          <div className="flex items-center gap-2 p-1.5 bg-white border border-slate-200 rounded-2xl shadow-lg shadow-slate-200/60 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
             <input
               type="text"
               value={newTodoText}
               onChange={(e) => setNewTodoText(e.target.value)}
               placeholder="What needs to be done today?..."
-              className="flex-1 bg-transparent px-4 py-3 text-slate-100 placeholder-slate-500 text-sm focus:outline-none"
+              className="flex-1 bg-transparent px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none"
             />
             <button type="submit" disabled={!newTodoText.trim()} className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm flex items-center gap-2 shadow-md shadow-indigo-600/30 transition disabled:opacity-40 active:scale-95">
               <Plus className="w-4 h-4" /> <span>Add</span>
@@ -401,12 +401,12 @@ export default function App() {
         </form>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
-          <div className="flex items-center bg-slate-900 border border-slate-800 p-1 rounded-xl text-xs">
+          <div className="flex items-center bg-slate-200/60 border border-slate-200 p-1 rounded-xl text-xs">
             {['all', 'active', 'completed'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-3 py-1.5 rounded-lg transition font-medium capitalize ${filter === f ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+                className={`px-3 py-1.5 rounded-lg transition font-medium capitalize ${filter === f ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'}`}
               >
                 {f}
               </button>
@@ -414,29 +414,29 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2 flex-1 sm:justify-end">
-            <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-slate-300 hover:border-slate-700">
-              <ArrowUpDown className="w-3.5 h-3.5 text-indigo-400" />
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="bg-transparent text-slate-200 focus:outline-none cursor-pointer">
-                <option value="newest" className="bg-slate-900">Newest first</option>
-                <option value="oldest" className="bg-slate-900">Oldest first</option>
-                <option value="az" className="bg-slate-900">A &rarr; Z</option>
-                <option value="za" className="bg-slate-900">Z &rarr; A</option>
-                <option value="status" className="bg-slate-900">Pending first</option>
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-700 hover:border-slate-300 shadow-sm">
+              <ArrowUpDown className="w-3.5 h-3.5 text-indigo-600" />
+              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="bg-transparent text-slate-700 focus:outline-none cursor-pointer font-medium">
+                <option value="newest" className="bg-white text-slate-900">Newest first</option>
+                <option value="oldest" className="bg-white text-slate-900">Oldest first</option>
+                <option value="az" className="bg-white text-slate-900">A &rarr; Z</option>
+                <option value="za" className="bg-white text-slate-900">Z &rarr; A</option>
+                <option value="status" className="bg-white text-slate-900">Pending first</option>
               </select>
             </div>
             <div className="relative flex-1 max-w-[210px]">
-              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-              <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search..." className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-8 pr-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500/70" />
+              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search..." className="w-full bg-white border border-slate-200 rounded-xl pl-8 pr-2.5 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-sm" />
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-2.5">
           {filteredTodos.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 px-4 border border-dashed border-slate-800/80 rounded-2xl bg-slate-900/30 text-center">
-              <CheckCircle2 className="w-7 h-7 text-slate-500 mb-3" />
-              <h3 className="text-sm font-medium text-slate-300">No tasks found</h3>
-              <p className="text-xs text-slate-500 mt-1 max-w-xs">Nothing to see here right now.</p>
+            <div className="flex flex-col items-center justify-center py-16 px-4 border border-dashed border-slate-200 rounded-2xl bg-white/60 text-center shadow-sm">
+              <CheckCircle2 className="w-7 h-7 text-slate-400 mb-3" />
+              <h3 className="text-sm font-medium text-slate-700">No tasks found</h3>
+              <p className="text-xs text-slate-400 mt-1 max-w-xs">Nothing to see here right now.</p>
             </div>
           ) : (
             filteredTodos.map((todo) => {
@@ -444,10 +444,10 @@ export default function App() {
               const isEditing = editingId === todo._id;
 
               return (
-                <div key={todo._id} className={`group flex items-start gap-3 p-3.5 rounded-xl border transition-all ${todo.completed ? 'bg-slate-900/40 border-slate-800/50' : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'}`}>
+                <div key={todo._id} className={`group flex items-start gap-3 p-3.5 rounded-xl border transition-all ${todo.completed ? 'bg-slate-100/60 border-slate-200/60 text-slate-400' : 'bg-white border-slate-200/90 hover:border-slate-300 shadow-sm shadow-slate-200/40'}`}>
                   <div className="flex items-start gap-3.5 flex-1 min-w-0">
-                    <button onClick={() => handleToggleTodo(todo)} disabled={isEditing} className="mt-0.5 text-slate-500 hover:text-indigo-400">
-                      {todo.completed ? <CheckCircle2 className="w-5 h-5 text-emerald-400" /> : <Circle className="w-5 h-5" />}
+                    <button onClick={() => handleToggleTodo(todo)} disabled={isEditing} className="mt-0.5 text-slate-400 hover:text-indigo-600 transition">
+                      {todo.completed ? <CheckCircle2 className="w-5 h-5 text-emerald-500" /> : <Circle className="w-5 h-5" />}
                     </button>
                     <div className="flex flex-col gap-1 flex-1">
                       {isEditing ? (
@@ -459,16 +459,16 @@ export default function App() {
                               if (e.key === 'Enter') handleSaveEdit(todo._id);
                               if (e.key === 'Escape') setEditingId(null);
                             }}
-                            className="bg-slate-950 border border-indigo-500/70 rounded-lg px-2.5 py-1.5 text-sm text-slate-100 focus:outline-none"
+                            className="bg-white border border-indigo-500 rounded-lg px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none shadow-sm"
                           />
                         </div>
                       ) : (
-                        <p onDoubleClick={() => !todo.completed && handleStartEdit(todo)} className={`text-sm break-words ${todo.completed ? 'line-through text-slate-500' : 'text-slate-100'}`}>
+                        <p onDoubleClick={() => !todo.completed && handleStartEdit(todo)} className={`text-sm break-words ${todo.completed ? 'line-through text-slate-400' : 'text-slate-800'}`}>
                           {todo.text}
                         </p>
                       )}
                       {formattedDate && !isEditing && (
-                        <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                        <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
                           <Clock className="w-3 h-3" /> {formattedDate} {todo.updatedAt && '(edited)'}
                         </div>
                       )}
@@ -477,13 +477,13 @@ export default function App() {
                   <div className="flex items-center gap-1">
                     {isEditing ? (
                       <>
-                        <button onClick={() => handleSaveEdit(todo._id)} className="p-1.5 text-emerald-400 hover:bg-emerald-500/10 rounded-lg"><Check className="w-4 h-4" /></button>
-                        <button onClick={() => setEditingId(null)} className="p-1.5 text-slate-400 hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
+                        <button onClick={() => handleSaveEdit(todo._id)} className="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg"><Check className="w-4 h-4" /></button>
+                        <button onClick={() => setEditingId(null)} className="p-1.5 text-slate-400 hover:bg-slate-100 rounded-lg"><X className="w-4 h-4" /></button>
                       </>
                     ) : (
                       <>
-                        <button onClick={() => handleStartEdit(todo)} className="p-1.5 text-slate-500 hover:text-indigo-400 hover:bg-indigo-500/10 rounded-lg opacity-80 sm:opacity-0 group-hover:opacity-100"><Edit2 className="w-3.5 h-3.5" /></button>
-                        <button onClick={() => setDeleteCandidate(todo)} className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg opacity-80 sm:opacity-0 group-hover:opacity-100"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => handleStartEdit(todo)} className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg opacity-80 sm:opacity-0 group-hover:opacity-100 transition"><Edit2 className="w-3.5 h-3.5" /></button>
+                        <button onClick={() => setDeleteCandidate(todo)} className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg opacity-80 sm:opacity-0 group-hover:opacity-100 transition"><Trash2 className="w-4 h-4" /></button>
                       </>
                     )}
                   </div>
@@ -495,13 +495,13 @@ export default function App() {
       </div>
 
       {isSettingsOpen && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 relative">
-            <button onClick={() => setIsSettingsOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-200"><X className="w-5 h-5" /></button>
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2"><Server className="w-5 h-5 text-indigo-400" /> API Settings</h2>
-            <div className="mt-4"><input type="text" value={pendingApiUrl} onChange={(e) => setPendingApiUrl(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 font-mono" /></div>
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md p-6 relative shadow-2xl text-slate-900">
+            <button onClick={() => setIsSettingsOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+            <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2"><Server className="w-5 h-5 text-indigo-600" /> API Settings</h2>
+            <div className="mt-4"><input type="text" value={pendingApiUrl} onChange={(e) => setPendingApiUrl(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:bg-white focus:border-indigo-500 shadow-sm" /></div>
             <div className="mt-6 flex justify-end gap-2.5">
-              <button onClick={() => setIsSettingsOpen(false)} className="px-4 py-2 rounded-xl text-xs text-slate-400 hover:bg-slate-800">Cancel</button>
+              <button onClick={() => setIsSettingsOpen(false)} className="px-4 py-2 rounded-xl text-xs text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
               <button onClick={() => { setApiUrl(pendingApiUrl); setIsSettingsOpen(false); }} className="px-4 py-2 rounded-xl text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Save</button>
             </div>
           </div>
@@ -509,13 +509,13 @@ export default function App() {
       )}
 
       {deleteCandidate && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-6">
-            <h3 className="font-semibold text-white mb-2">Delete Task?</h3>
-            <p className="text-xs text-slate-400 mb-5">Remove "{deleteCandidate.text}"?</p>
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-sm p-6 shadow-2xl text-slate-900">
+            <h3 className="font-semibold text-slate-900 mb-2">Delete Task?</h3>
+            <p className="text-xs text-slate-500 mb-5">Remove "{deleteCandidate.text}"?</p>
             <div className="flex justify-end gap-2.5">
-              <button onClick={() => setDeleteCandidate(null)} className="px-3.5 py-2 rounded-xl text-xs text-slate-400 hover:bg-slate-800">Cancel</button>
-              <button onClick={confirmDelete} className="px-4 py-2 rounded-xl text-xs bg-rose-600 hover:bg-rose-500 text-white">Delete</button>
+              <button onClick={() => setDeleteCandidate(null)} className="px-3.5 py-2 rounded-xl text-xs text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+              <button onClick={confirmDelete} className="px-4 py-2 rounded-xl text-xs bg-rose-600 hover:bg-rose-500 text-white font-medium">Delete</button>
             </div>
           </div>
         </div>
